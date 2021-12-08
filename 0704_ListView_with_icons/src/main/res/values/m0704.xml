@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="week">
+
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tusday</item>
+        <item>Wednseday</item>
+        <item>Thrusday</item>
+        <item>Friday</item>
+        <item>Staurday</item>
+        <item>Staurday</item>
+        <item>Staurday</item>
+
+    </string-array>
+
+    <string-array name="weekday02">
+        <item>星期日鄭章基去睡覺</item>
+        <item>星期一鄭章基穿新衣</item>
+        <item>星期二鄭章基肚子餓</item>
+        <item>星期三鄭章基去爬山</item>
+        <item>星期四鄭章基去考試</item>
+        <item>星期五鄭章基去跳舞</item>
+        <item>星期六鄭章基去溜溜</item>
+        <item>星期7鄭章基去溜溜</item>
+        <item>星期8鄭章基去溜溜</item>
+    </string-array>
+
+
+
+    <string name="noback">禁用返回建</string>
+    <string name="m0704_t010">選擇:</string>
+    <string name="m0704_t011">禮拜幾</string>
+
+
+</resources>
