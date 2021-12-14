@@ -4,7 +4,10 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
@@ -25,7 +28,7 @@ public class M0705 extends AppCompatActivity implements
 
       private TextView s001, f000;
       private String player_select, ans;
-      private ImageView c001;
+      private ImageSwitcher c001;
       private ImageButton b001, b002, b003;
       private MediaPlayer startmusic, mediaWin, mediaLose, mediaDraw, endmusic;
       private Toast toast;
@@ -35,13 +38,17 @@ public class M0705 extends AppCompatActivity implements
       protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.m0705);
-
             setupViewComponent();
+
+
       }
 
       //初始化物件
       private void setupViewComponent() {
-            c001 = (ImageView) findViewById(R.id.m0705_c001);
+
+            c001 = (ImageSwitcher) findViewById(R.id.m0705_c001);
+            c001.setFactory(this);
+
             s001 = (TextView) findViewById(R.id.m0705_s001);
             f000 = (TextView) findViewById(R.id.m0705_f000);
 
@@ -77,6 +84,12 @@ public class M0705 extends AppCompatActivity implements
             b001.setOnClickListener(buttonOn);
             b002.setOnClickListener(buttonOn);
             b003.setOnClickListener(buttonOn);
+
+            user_setAlpha(); //初始值設定透明
+
+
+
+
       }
 
       //設定按鈕監聽
@@ -89,7 +102,9 @@ public class M0705 extends AppCompatActivity implements
                   switch (view.getId()) {
                         case R.id.m0705_b001://玩家選剪刀
                               user_setAlpha();
-                              b001.getBackground().setAlpha(200);
+
+                              b001.getBackground().setAlpha(200);  //背影顏色不透明
+
 
                               switch (icomp) {
                                     case 0:
@@ -149,21 +164,48 @@ public class M0705 extends AppCompatActivity implements
                               break;
                   }
                   //-------------------------------------------------
+                  //            -------------電腦出拳增加動畫-------------
+
+                  Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_trans_bounce);
+                  anim.setInterpolator(new BounceInterpolator());
+                  c001.setAnimation(anim);
+//                  c001.clearAnimation();
+//                  c001.setOutAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_trans_out1));
+//                  c001.setInAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anim_five_out));
+
+
+
+//                  Toast.makeText(getApplicationContext(), "測試", Toast.LENGTH_SHORT).show();
+
+
+
+
+                  //-------------------------------------------------
+
                   s001.setText(player_select);
                   f000.setText(ans);
             }
+
       };
 
       //歸零
       private void user_setAlpha() {
 
             //imageButton 背景為銀色且為全透明
-            b001.setBackgroundColor(Color.parseColor("#c0c0c0"));
+            b001.setBackgroundResource((R.drawable.circle_shape));
             b001.getBackground().setAlpha(0); //0-255
-            b002.setBackgroundColor(Color.parseColor("#c0c0c0"));
+
+            b002.setBackgroundResource((R.drawable.circle_shape));
             b002.getBackground().setAlpha(0);
-            b003.setBackgroundColor(Color.parseColor("#c0c0c0"));
+
+            b003.setBackgroundResource((R.drawable.circle_shape));
             b003.getBackground().setAlpha(0);
+
+//            c001.setImageResource(R.drawable.ring);
+//            c001.getBackground().setAlpha(0);
+
+
+
       }
 
       private void music(int i) {
@@ -225,9 +267,12 @@ public class M0705 extends AppCompatActivity implements
             ImageView v = new ImageView(this);
             // v.setBackgroundColor(0xFF000000);
             v.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            v.setLayoutParams(new
-                    ImageSwitcher.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            v.setLayoutParams
+                    (new ImageSwitcher.LayoutParams
+                            (LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+
+
             return v;
 
       }

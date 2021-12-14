@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class M0700 extends AppCompatActivity {
+public class M0700 extends AppCompatActivity  {
 
     private String TAG = "tcnr08=>";
 

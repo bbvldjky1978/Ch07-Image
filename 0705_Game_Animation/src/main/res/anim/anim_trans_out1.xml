@@ -3,15 +3,26 @@
     android:shareInterpolator="false" >
     <translate
         android:interpolator="@android:anim/accelerate_interpolator"
-        android:startOffset="600"
-        android:duration="1000"
-        android:fromYDelta="-200%p"
-        android:toYDelta="0%p"
-        android:fromXDelta="-200%p"
-        android:toXDelta="0%p"
-
+        android:startOffset="50"
+        android:duration="500"
+        android:fromYDelta="2%p"
+        android:toYDelta="200%p"
         android:fillAfter="true"/>
+
+    <translate
+        android:interpolator="@android:anim/accelerate_interpolator"
+        android:startOffset="50"
+        android:duration="500"
+        android:fromYDelta="2%p"
+        android:toYDelta="-200%p"
+        android:fillAfter="true"/>
+
+
+
 </set>
+
+
+
     <!-- translate 位置轉移動畫效果
         整型值:
             fromXDelta 屬性為動畫起始時 X坐標上的位置

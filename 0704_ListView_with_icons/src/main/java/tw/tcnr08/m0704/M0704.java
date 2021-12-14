@@ -61,6 +61,7 @@ public class M0704  extends ListActivity {
                 R.layout.list_new,
                 new String[]{"imgView","txtView01","txtView02"},
                 new int[]{R.id.imgView2,R.id.textView,R.id.textView2});
+
         setListAdapter(adapter);
 //----------------------------------------------------------------------------------------------------------
 
@@ -71,9 +72,12 @@ public class M0704  extends ListActivity {
 
     }
     AdapterView.OnItemClickListener listviewOnItemClkLis = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> parent, View view,
-                                int position, long id) {
-            mTxtResult.setText("你選擇:"+listFromResource[position] +"   " +listFromResource02[position]);
+        public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+
+
+         mTxtResult.setText("你選擇:"+listFromResource[position] +"   " +listFromResource02[position]);
+
+//            mTxtResult.s
         }
     };
 
